@@ -1,7 +1,6 @@
 # Stochastic Asset Pricing & Monte Carlo Simulation Engine
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Overview
 
@@ -9,12 +8,12 @@ A production-grade, object-oriented Monte Carlo simulation engine for modeling f
 
 ### Key Features
 
-- ✅ **Mathematically Rigorous** — Proper GBM implementation with Itô drift adjustment
-- ✅ **Reproducible Results** — Seed-controlled random number generation using NumPy's modern `Generator` API
-- ✅ **Immutable Results** — Frozen dataclasses prevent accidental state mutation
-- ✅ **Production Logging** — Structured logging instead of print statements
-- ✅ **Vectorized Monte Carlo** — Run 10,000+ simulations efficiently
-- ✅ **Extensible Architecture** — Abstract base classes for custom distributions
+- **Mathematically Rigorous** — Proper GBM implementation with Itô drift adjustment
+- **Reproducible Results** — Seed-controlled random number generation using NumPy's modern `Generator` API
+- **Immutable Results** — Frozen dataclasses prevent accidental state mutation
+- **Production Logging** — Structured logging instead of print statements
+- **Vectorized Monte Carlo** — Run 10,000+ simulations efficiently
+- **Extensible Architecture** — Abstract base classes for custom distributions
 
 ---
 
@@ -273,7 +272,7 @@ def generate_sample(self, n: int = 1) -> np.ndarray
 | `TRandomVariable` | `(df, mean, std_dev)` | `df > 2` for defined variance |
 | `NormalSkewedRandomVariable` | `(mean, std_dev, alpha)` | `alpha < 0` = left skew |
 
-> ⚠️ **Important**: The `std_dev` parameter is the **standard deviation**, not variance. This matches `scipy.stats` conventions.
+> **Important**: The `std_dev` parameter is the **standard deviation**, not variance. This matches `scipy.stats` conventions.
 
 ---
 
@@ -321,7 +320,7 @@ INFO:sp500_simulation:  Random Seed: 42
 The legacy `simulate_index()` method is preserved but deprecated:
 
 ```python
-# ⚠️ Deprecated - emits DeprecationWarning
+# DEPRECATED - emits DeprecationWarning
 prices = sp500.simulate_index(
     var_class=NormalRandomVariable,  # Ignored in new implementation
     n_periods=60,
@@ -329,7 +328,7 @@ prices = sp500.simulate_index(
     annual_volatility=0.18
 )
 
-# ✅ Recommended
+# Recommended
 result = sp500.simulate(n_periods=60, annual_return=0.10, annual_volatility=0.18)
 ```
 
@@ -352,11 +351,6 @@ result = sp500.simulate(n_periods=60, annual_return=0.10, annual_volatility=0.18
 2. Hull, J. C. (2018). *Options, Futures, and Other Derivatives* (10th ed.). Pearson.
 3. Glasserman, P. (2003). *Monte Carlo Methods in Financial Engineering*. Springer.
 
----
-
-## License
-
-MIT License — See [LICENSE](LICENSE) for details.
 
 ---
 
